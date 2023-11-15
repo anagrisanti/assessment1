@@ -1,0 +1,391 @@
+---
+title: "assessment1"
+---
+
+Ana Grisanti
+WB STC R Assessment
+Global Poverty and Inequality Data Team 
+
+```{r}
+rm(list = ls())
+
+#Loading WDI dataset
+tag      <- "202311081903"
+base_url <- "https://github.com/randrescastaneda/pub_data/raw/"
+data_url <- paste0(base_url, tag, "/data/Rtest1/")
+
+wdi <- readr::read_rds(paste0(data_url, "wdi_in1.Rds"))
+
+#Installing necessary packages and calling the libraries
+#install.packages('doBy')
+#install.packages('pracma')
+library('pracma')
+library('doBy')
+library(collapse)
+library(dplyr)
+library(tidyverse)
+library(tidyr)
+```
+
+1.  Summary Statistics of GDP per capita by region
+
+```{r}
+#Generating new dataset with summary statistics of GDP per capita, by region and year
+rep1_df<- wdi %>% drop_na(gdp)
+rep1_df<-rep1_df%>%
+   group_by(region, date) %>%
+   summarise(N=n(),
+             Mean= weighted.mean(gdp,pop), ##Generating a weighted mean variable for gdp
+             SD= sd(gdp), ##Generating a standard deviation variable for gdp
+             Min= min(gdp),
+             Max= max(gdp))
+
+#FINAL OUTPUT
+write.csv(rep1_df, "ReplicateDF_Q1.csv", row.names=FALSE)
+
+#Checking similarity to original data
+org1_df <- readr::read_rds(paste0(data_url, "wdi_summ_out.Rds"))
+waldo::compare(rep1_df, org1_df)
+```
+
+2.  Aggregate stats
+
+```{r}
+#Checking data to replicate 
+org2_df<- readr::read_rds(paste0(data_url, "wdi_agg_out.Rds"))
+
+#Generating new dataset with descriptive statistics of gdp, lifeex, and pov_intl by region and year
+rep2_df<- collap(wdi, by = ~ region + date, 
+       custom = list(fmean = .c(lifeex, gdp, pov_intl), ## Generating variables with the corresponding means
+                     fsd = .c(lifeex, gdp, pov_intl), ## Generating variables with the correspoding standard dev.
+                     fmax_uw = .c(lifeex, gdp, pov_intl), 
+                     fmin_uw = .c(lifeex, gdp, pov_intl),
+                     fmedian = .c(lifeex, gdp, pov_intl)),
+       w = ~ pop) ##using population weights
+
+#Converting each dataframe to long format, for the three measures
+rep2_df_gdp <- rep2_df %>%
+  gather(estimate, gdp, fmean.gdp:fmedian.gdp, factor_key=TRUE)
+rep2_df_lifeex <- rep2_df %>%
+  gather(estimate, lifeex, fmean.lifeex:fmedian.lifeex, factor_key = TRUE)
+rep2_df_povintl <- rep2_df %>%
+  gather(estimate, pov_intl, fmean.pov_intl:fmedian.pov_intl, factor_key = TRUE)
+
+#Keeping only necessary variables for each dataframe (estimate, region, date, pop and gdp)
+rep2_df_gdp = rep2_df_gdp[c("estimate","region", "date", "pop", "gdp")]
+rep2_df_lifeex = rep2_df_lifeex[c("estimate","region", "date", "pop", "lifeex")]
+rep2_df_povintl = rep2_df_povintl[c("estimate","region", "date", "pop", "pov_intl")]
+
+#Cleaning up estimate variable for the dataframe for estimates of GDP variable
+rep2_df_gdp$estimate <- gsub(".*fmean.*", "Mean", rep2_df_gdp$estimate)
+rep2_df_gdp$estimate <- gsub(".*fsd.*", "SD", rep2_df_gdp$estimate)
+rep2_df_gdp$estimate <- gsub(".*fmin.*", "Min", rep2_df_gdp$estimate)
+rep2_df_gdp$estimate <- gsub(".*fmax.*", "Max", rep2_df_gdp$estimate)
+rep2_df_gdp$estimate <- gsub(".*fmedian.*", "Median", rep2_df_gdp$estimate)
+#Cleaning up estimate variable for the dataframe for estimates of lifeex variable
+rep2_df_lifeex$estimate <- gsub(".*fmean.*", "Mean", rep2_df_lifeex$estimate)
+rep2_df_lifeex$estimate <- gsub(".*fsd.*", "SD", rep2_df_lifeex$estimate)
+rep2_df_lifeex$estimate <- gsub(".*fmin.*", "Min", rep2_df_lifeex$estimate)
+rep2_df_lifeex$estimate <- gsub(".*fmax.*", "Max", rep2_df_lifeex$estimate)
+rep2_df_lifeex$estimate <- gsub(".*fmedian.*", "Median", rep2_df_lifeex$estimate)
+#Cleaning up estimate variable for the dataframe for estimates of pov_intl variable
+rep2_df_povintl$estimate <- gsub(".*fmean.*", "Mean", rep2_df_povintl$estimate)
+rep2_df_povintl$estimate <- gsub(".*fsd.*", "SD", rep2_df_povintl$estimate)
+rep2_df_povintl$estimate <- gsub(".*fmin.*", "Min", rep2_df_povintl$estimate)
+rep2_df_povintl$estimate <- gsub(".*fmax.*", "Max", rep2_df_povintl$estimate)
+rep2_df_povintl$estimate <- gsub(".*fmedian.*", "Median", rep2_df_povintl$estimate)
+
+#Merging dataframes made for each measure, to get the final replicated dataframe with all three measures and the estimates required (mean, SD, min, max and median)
+merged <- merge(rep2_df_gdp, rep2_df_lifeex, by=c("estimate","region", "date", "pop"))
+rep2_df <- merge(merged, rep2_df_povintl, by=c("estimate","region", "date", "pop"))
+rm(merged, rep2_df_, rep2_df_gdp, rep2_df_lifeex, rep2_df_povintl)
+
+#FINAL OUTPUT
+write.csv(rep2_df, "ReplicateDF_Q2.csv", row.names=FALSE)
+
+#Checking for similarity with original datagrame
+waldo::compare(rep2_df, org2_df)
+
+```
+
+3.  Find outliers
+
+```{r}
+org3_df<-readr::read_rds(paste0(data_url, "wdi_outliers_out.Rds"))
+
+#Generating dataset with mean and sd of lifeex, gdp and gini
+df_summary <- wdi %>% 
+  group_by(date) %>% 
+  summarise(gdp.mean = weighted.mean(gdp, pop, na.rm=TRUE), ##Generating variable with mean of GDP by year
+            gini.mean= weighted.mean(gini, pop, na.rm=TRUE), ##Generating variable with mean of GINI by year
+            lifeex.mean= weighted.mean(lifeex, pop, na.rm=TRUE),
+            gdp.sd = sd(gdp, na.rm=TRUE), ##Generating variable with standard deviation of GDP by year
+            gini.sd= sd(gini, na.rm=TRUE), ##Generating variable with standard deviation of GINI by year
+            lifeex.sd= sd(lifeex, na.rm=TRUE))
+
+#Joining original data with summary 
+rep3_df <- left_join(wdi, df_summary, by = "date")
+
+#Generating outlier identifying variables. Creating boolean variables that are TRUE if the measure is less than 2.5 standard deviations above or below the mean.
+rep3_df <- rep3_df %>%
+  mutate(ll_gdp = print(gdp < gdp.mean - 2.5*(gdp.sd))) %>%
+  mutate(hl_gdp = print(gdp > gdp.mean + 2.5*(gdp.sd))) %>%
+  mutate(ll_gini = print(gini < gini.mean - 2.5*(gini.sd))) %>%
+  mutate(hl_gini = print(gini > gini.mean + 2.5*(gini.sd))) %>%
+  mutate(ll_lifeex = print(lifeex < lifeex.mean - 2.5*(lifeex.sd))) %>%
+  mutate(hl_lifeex = print(lifeex > lifeex.mean + 2.5*(lifeex.sd)))
+
+#Checking for similarity with original datagrame
+waldo::compare(rep3_df, org3_df)
+
+#FINAL OUTPUT
+write.csv(rep3_df, "ReplicateDF_Q3.csv", row.names=FALSE)
+```
+
+4.  Poverty measures
+
+```{r}
+#Loading the data
+l_svy <-readr::read_rds(paste0(data_url, "svy_sim_in1.Rds"))
+
+#Loading the dataset to be replicated
+org4_df <- readr::read_rds(paste0(data_url, "dt_pov_out.Rds"))
+
+#Calculating headcount vectors for incomes under $2.15, $3.65 and $6.85
+headcount215 <- vector(mode="numeric")  ##creating an empty numeric vector
+number <- 1:10  ##generating a vector of numbers 1 through 10 to be looped over
+## Looping over indeces 1 through 10 of the l_svy list, which corresponds to each HH survey (year) in the list. Each time using the headcount ratio formula based on income, weights and the poverty line. Income for 2001 is called with l_svy[[1]][1], meaning the first column in the first dataframe of the list. Weights for 2001 are called with l_svy[[1]][2], meaning the second column in the first dataframe of the list.
+for(i in number) {
+    result<-sum(print(l_svy[[i]][1]<2.15)*l_svy[[i]][2])/sum(l_svy[[i]][2])
+    headcount215 <- append(headcount215, result)
+}
+
+headcount365 <- vector(mode="numeric")
+number <- 1:10
+for(i in number) {
+    result<-sum(print(l_svy[[i]][1]<3.65)*l_svy[[i]][2])/sum(l_svy[[i]][2])
+    headcount365 <- append(headcount365, result)
+}
+
+headcount685 <- vector(mode="numeric")
+number <- 1:10
+for(i in number) {
+    result<-sum(print(l_svy[[i]][1]<6.85)*l_svy[[i]][2])/sum(l_svy[[i]][2])
+    headcount685 <- append(headcount685, result)
+}
+
+#Creating a dataframe for headcount calculations
+year <- 2001:2010 ## creating a vector with all the years
+headcount_df <- data.frame(year, headcount215, headcount365, headcount685) ##putting together all the vectors
+
+#Calculating poverty gap vector for pov_line 2.15
+povertygap215 <- vector(mode="numeric") ##creating an empty numeric vector
+number <- 1:10 ##generating a vector of numbers 1 through 10 to be looped over
+## Looping over indeces 1 through 10 of the l_svy list, which corresponds to each HH survey (year) in the list. Each time, first calculating weighted average income of those below poverty line (avrginc), then calculating the multiplier for the poverty gap (povertyratio), then calculating the headcount ratio again (headcount). Finally, uses the value headcount and povertyratio to calculate povertygap for that year. The final line appends the newly calculated povertygap for each year to create a vector povertygap (ex: povertygap215).
+for(i in number) {
+  avrginc <- 
+    sum(l_svy[[i]][1]*l_svy[[i]][2]*print(l_svy[[i]][1]<2.15))/sum(l_svy[[i]][2]*print(l_svy[[i]][1]<2.15))
+  povertyratio <- (2.15 - avrginc)/2.15
+  headcount <- sum(print(l_svy[[i]][1]<2.15)*l_svy[[i]][2])/sum(l_svy[[i]][2])
+  povertygap <- headcount*povertyratio
+  povertygap215 <- append(povertygap215, povertygap)
+}
+
+#Calculating poverty gap vector for pov_line 3.65
+povertygap365 <- vector(mode="numeric")
+number <- 1:10
+for(i in number) {
+  avrginc <- 
+    sum(l_svy[[i]][1]*l_svy[[i]][2]*print(l_svy[[i]][1]<3.65))/sum(l_svy[[i]][2]*print(l_svy[[i]][1]<3.65))
+  povertyratio <- (3.65 - avrginc)/3.65
+  headcount <- sum(print(l_svy[[i]][1]<3.65)*l_svy[[i]][2])/sum(l_svy[[i]][2])
+  povertygap <- headcount*povertyratio
+  povertygap365 <- append(povertygap365, povertygap)
+}
+
+#Calculating poverty gap vector for pov_line 6.85
+povertygap685 <- vector(mode="numeric")
+number <- 1:10
+for(i in number) {
+  avrginc <- 
+    sum(l_svy[[i]][1]*l_svy[[i]][2]*print(l_svy[[i]][1]<6.85))/sum(l_svy[[i]][2]*print(l_svy[[i]][1]<6.85))
+  povertyratio <- (6.85 - avrginc)/6.85
+  headcount <- sum(print(l_svy[[i]][1]<6.85)*l_svy[[i]][2])/sum(l_svy[[i]][2])
+  povertygap <- headcount*povertyratio
+  povertygap685 <- append(povertygap685, povertygap)
+}
+
+#Creating a dataframe for povertygap calculations
+povertygap_df <- data.frame(year, povertygap215, povertygap365, povertygap685) ##putting together the vectors
+
+
+#Calculating poverty severity for pov_line 2.15
+povertysev215 <- vector(mode="numeric") ##creating an empty numeric vector
+number <- 1:10 ##generating a vector of numbers 1 through 10 to be looped over
+##Looping over the indices 1 through 10 to calculate the poverty severity for each of the HH surveys (years). First, a new column is added to each of the HH surveys, with the squared deviations from the poverty line for those incomes that are below the poverty line (l_svy[[1]][4]). Then, this calculation is used in the final component of the poverty severity formula, to calculate poverty severity for each year (povertysec). The final line appends each new calculated poverty severity to the newly created vector (povertysev215)
+for(i in number) {
+  l_svy[[i]][4] <- (((2.15 - l_svy[[i]][1])*print(l_svy[[i]][1]<2.15))/2.15)^2
+  povertysev <- (sum(l_svy[[i]][2]*l_svy[[i]][4]))/sum(l_svy[[i]][2]) 
+  povertysev215 <- append(povertysev215, povertysev)
+}
+
+povertysev365 <- vector(mode="numeric")
+number <- 1:10 
+for(i in number) {
+  l_svy[[i]][4] <- (((3.65 - l_svy[[i]][1])*print(l_svy[[i]][1]<3.65))/3.65)^2
+  povertysev <- (sum(l_svy[[i]][2]*l_svy[[i]][4]))/sum(l_svy[[i]][2]) 
+  povertysev365 <- append(povertysev365, povertysev)
+}
+
+povertysev685 <- vector(mode="numeric")
+number <- 1:10 
+for(i in number) {
+  l_svy[[i]][4] <- (((6.85 - l_svy[[i]][1])*print(l_svy[[i]][1]<6.85))/6.85)^2
+  povertysev <- (sum(l_svy[[i]][2]*l_svy[[i]][4]))/sum(l_svy[[i]][2]) 
+  povertysev685 <- append(povertysev685, povertysev)
+}
+
+#Creating a dataframe for povertygap calculations
+povertysev_df <- data.frame(year, povertysev215, povertysev365, povertysev685) ##putting together the vectors
+
+
+#Converting dataframes with headcount ratio and poverty gap from wide to long
+headcount_df <- headcount_df %>%
+  gather(pov_line, headcount, headcount215:headcount685, factor_key=TRUE)
+#Cleaning up the pov_line variable
+headcount_df$pov_line <- gsub(".*215.*", "2.15", headcount_df$pov_line)
+headcount_df$pov_line <- gsub(".*365.*", "3.65", headcount_df$pov_line)
+headcount_df$pov_line <- gsub(".*685.*", "6.85", headcount_df$pov_line)
+
+povertygap_df <- povertygap_df %>%
+  gather(pov_line, povgap, povertygap215:povertygap685, factor_key=TRUE)
+povertygap_df$pov_line <- gsub(".*215.*", "2.15", povertygap_df$pov_line)
+povertygap_df$pov_line <- gsub(".*365.*", "3.65", povertygap_df$pov_line)
+povertygap_df$pov_line <- gsub(".*685.*", "6.85", povertygap_df$pov_line)
+
+povertysev_df <- povertysev_df %>%
+  gather(pov_line, povseverity, povertysev215:povertysev685, factor_key=TRUE)
+povertysev_df$pov_line <- gsub(".*215.*", "2.15", povertysev_df$pov_line)
+povertysev_df$pov_line <- gsub(".*365.*", "3.65", povertysev_df$pov_line)
+povertysev_df$pov_line <- gsub(".*685.*", "6.85", povertysev_df$pov_line)
+
+#Merging dataframes for headcount ratio and poverty gap in long formats
+rep4_df <- merge(headcount_df, povertygap_df, by=c("year","pov_line"))
+rep4_df <- merge(rep4_df, povertysev_df, by=c("year","pov_line"))
+
+#FINAL OUTPUT
+write.csv(rep4_df, "ReplicateDF_Q4.csv", row.names=FALSE)
+
+#Generating the plot
+plot4 <- ggplot(rep4_df, aes(x = year, y = headcount, group = pov_line, color = as.factor(pov_line))) + geom_line()
+ggsave('plot_4.jpg')
+```
+
+5.  Lorenz curve
+
+```{r}
+#Keeping only elements in the environment that are final output or serving a purpose for future exercises
+rm(list = setdiff(ls(), c('org1_df', 'org2_df', 'org3_df', 'org4_df', 'rep1_df', 'rep2_df', 'rep3_df', 'rep4_df', 'plot4', 'l_svy', 'tag', 'base_url', 'data_url')))
+
+#Loading example data to replicate in exercise 5
+org5_df<- readr::read_rds(paste0(data_url, "dt_lorenz_out.Rds"))
+
+#Creating a function to yield Lorenz curve variables
+calculate_lorenz_curves <- function(survey_list) {
+  # Initialize an empty dataframe to store the results
+  rep5_df <- data.frame()
+
+  # Iterate through each survey in the list
+  number <- 1:10
+  for(i in number) {
+    survey <- l_svy[[i]]
+    year <- 2000 + i
+
+    # Sort the survey data by income in ascending order
+    survey <- survey %>% arrange(income)
+
+    # Calculate the cumulative population and cumulative welfare
+      survey <- survey %>%
+      mutate(cum_population = cumsum(weight)/max(cumsum(weight)),
+             cum_welfare = cumsum(weight * income)/max(cumsum(weight*income)),
+             year = year) %>% #Generating a variable for the year
+      rename(welfare = income) #Changing the income name variable to the 
+     
+    #Keeping only 101 observations for each year, based on 101 marks of percentiles
+     survey$bin <- round(survey$cum_population, digits = 2) ##Creating bins based on cum_population
+     survey$diff <- survey$bin - survey$cum_population ## Identifying where cum_pop is closest to bins
+     survey$diff <- abs(survey$diff)
+     summary <- survey %>% 
+       group_by(bin) %>% 
+       slice_min(order_by = diff) ##Keeping only observations identified that are closest to bins
+     summary$bin <- summary$bin*100
+     
+    #Keeping only necessary variables
+    summary = summary[c("welfare", "cum_welfare", "cum_population", "bin", "year")] 
+    
+    #binding the summary dataframe for each year into one dataset
+    rep5_df <- bind_rows(rep5_df, summary)
+    }
+  
+    return(rep5_df)
+}
+
+#Applying the function to the l_svy list of dataframes
+rep5_df <- calculate_lorenz_curves(l_svy)
+
+#FINAL OUTPUT
+write.csv(rep5_df, "ReplicateDF_Q5.csv", row.names=FALSE)
+
+#Generating and saving the plot
+plot5 <- ggplot(rep5_df, aes(x = cum_population, y = cum_welfare, group = year, color = as.factor(year))) + geom_line()
+ggsave('plot_5.jpg')
+
+```
+
+6.  Gini coefficient
+
+```{r}
+org6_df<- readr::read_rds(paste0(data_url, "dt_gini_out.Rds"))
+
+#Creating the function to calcualte gini coefficient
+calculate_gini_coef <- function(df) {
+  # Initialize an empty dataframe to store the results
+  rep6_df <- data.frame()
+
+  # Iterate through each survey in the list
+  number <- 2001:2010
+  for(i in number) {
+    yearlorenz <- subset(df, year == i) ##Keeping a subset of the data for one year
+    year = i
+    total_pop <- max(yearlorenz$cum_population)
+    
+    # Calculate the area under the Lorenz curve using the trapezoidal rule
+    yearlorenz <- yearlorenz %>%
+      arrange(cum_population) %>%
+      mutate(area = (cum_welfare + lag(cum_welfare, default = 0)) * 
+           (cum_population - lag(cum_population, default = 0)) / 2)
+    
+    # Calculate Gini coefficient
+    gini <- 1 - 2 * sum(yearlorenz$area) / total_pop
+    
+    #Creating a line for each year with the gini
+    result <- data.frame(year, gini)
+    
+    #binding the result for each year into the final dataframe
+    rep6_df <- bind_rows(rep6_df, result)
+  }
+  return(rep6_df)
+}
+
+#Applying the function to the output in the previous exercise
+rep6_df <- calculate_gini_coef(rep5_df)
+
+#FINAL OUTPUT
+write.csv(rep6_df, "ReplicateDF_Q6.csv", row.names=FALSE)
+
+#Generating and saving the plot
+plot6 <- ggplot(rep6_df, aes(x = year, y = gini)) + 
+       geom_line()
+ggsave('plot_6.jpg')
+```
+

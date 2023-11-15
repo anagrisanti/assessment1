@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>assessment1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">assessment1</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">assessment1</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Ana Grisanti WB STC R Assessment Global Poverty and Inequality Data Team</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Loading WDI dataset</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>tag      <span class="ot">&lt;-</span> <span class="st">"202311081903"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>base_url <span class="ot">&lt;-</span> <span class="st">"https://github.com/randrescastaneda/pub_data/raw/"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data_url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(base_url, tag, <span class="st">"/data/Rtest1/"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>wdi <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="fu">paste0</span>(data_url, <span class="st">"wdi_in1.Rds"</span>))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Installing necessary packages and calling the libraries</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages('doBy')</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages('pracma')</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages('ddpcr')</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ddpcr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'ddpcr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    step</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pracma)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(doBy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'doBy'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:pracma':
+
+    taylor</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(collapse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'collapse' was built under R version 4.1.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>collapse 1.9.2, see ?`collapse-package` or ?`collapse-documentation`</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'collapse'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    D</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:doBy':
+
+    order_by</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.1.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tibble' was built under R version 4.1.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.1.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readr' was built under R version 4.1.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'stringr' was built under R version 4.1.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'forcats' was built under R version 4.1.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ readr     2.1.4
+✔ ggplot2   3.4.4     ✔ stringr   1.5.0
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     1.0.2     ✔ tidyr     1.3.0</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ purrr::cross()       masks pracma::cross()
+✖ dplyr::filter()      masks stats::filter()
+✖ lubridate::is.Date() masks collapse::is.Date()
+✖ dplyr::lag()         masks stats::lag()
+✖ dplyr::order_by()    masks doBy::order_by()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>Summary Statistics of GDP per capita by region</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Generating new dataset with summary statistics of GDP per capita, by region and year</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>rep1_df<span class="ot">&lt;-</span> wdi <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(gdp)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>rep1_df<span class="ot">&lt;-</span>rep1_df<span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(region, date) <span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span>(<span class="at">N=</span><span class="fu">n</span>(),</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">Mean=</span> <span class="fu">weighted.mean</span>(gdp,pop), <span class="do">##Generating a weighted mean variable for gdp</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">SD=</span> <span class="fu">sd</span>(gdp), <span class="do">##Generating a standard deviation variable for gdp</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">Min=</span> <span class="fu">min</span>(gdp),</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">Max=</span> <span class="fu">max</span>(gdp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'region'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#FINAL OUTPUT</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(rep1_df, <span class="st">"ReplicateDF_Q1.csv"</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Checking similarity to original data</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>org1_df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="fu">paste0</span>(data_url, <span class="st">"wdi_summ_out.Rds"</span>))</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>waldo<span class="sc">::</span><span class="fu">compare</span>(rep1_df, org1_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>`class(old)`: "grouped_df" "tbl_df" "tbl" "data.frame"
+`class(new)`: "data.table"                "data.frame"
+
+`names(old)[1:5]`: "region" "date" "N" "Mean" "SD"
+`names(new)[1:5]`: "region" "year" "N" "Mean" "SD"
+
+`attr(old, 'groups')` is an S3 object of class &lt;tbl_df/tbl/data.frame&gt;, a list
+`attr(new, 'groups')` is absent
+
+`attr(old$region, 'label')` is a character vector ('region')
+`attr(new$region, 'label')` is absent
+
+`old$date` is a double vector (1990, 1991, 1992, 1993, 1994, ...)
+`new$date` is absent
+
+`old$N` is an integer vector (22, 22, 22, 22, 22, ...)
+`new$N` is a double vector (22, 22, 22, 22, 22, ...)
+
+     old$Mean           | new$Mean                           
+ [1] 4913.1033824116084 - 4913.1033824116075 [1]             
+ [2] 5105.0104171493358 | 5105.0104171493358 [2]             
+ [3] 5290.8095613208006 | 5290.8095613208006 [3]             
+ [4] 5482.7896793386972 - 5482.7896793386963 [4]             
+ [5] 5740.0878796092356 - 5740.0878796092338 [5]             
+ [6] 6037.2194463295655 | 6037.2194463295655 [6]             
+ [7] 6339.7772987429998 - 6339.7772987430008 [7]             
+ [8] 6537.7012496267325 - 6537.7012496267316 [8]             
+ [9] 6449.2714744924242 | 6449.2714744924242 [9]             
+[10] 6634.8428345702760 - 6634.8428345702769 [10]            
+ ... ...                  ...                and 116 more ...
+
+      old$Mean            | new$Mean                 
+[128] 39972.3937454740808 | 39972.3937454740808 [128]
+[129] 40540.1730477565070 | 40540.1730477565070 [129]
+[130] 41680.3363897968156 | 41680.3363897968156 [130]
+[131] 42299.3843855870582 - 42299.3843855870655 [131]
+[132] 43317.4916249835878 | 43317.4916249835878 [132]
+[133] 44705.8925252675472 | 44705.8925252675472 [133]
+[134] 46162.1959999669634 | 46162.1959999669634 [134]
+
+      old$Mean            | new$Mean                           
+[139] 50641.6393301463177 | 50641.6393301463177 [139]          
+[140] 52075.8345827743615 | 52075.8345827743615 [140]          
+[141] 53382.2451330527474 | 53382.2451330527474 [141]          
+[142] 54332.3212907509514 - 54332.3212907509442 [142]          
+[143] 54901.6846339972617 - 54901.6846339972544 [143]          
+[144] 54483.4046545501769 | 54483.4046545501769 [144]          
+[145] 52575.3572801488772 - 52575.3572801488699 [145]          
+[146] 53554.8870340037756 - 53554.8870340037683 [146]          
+[147] 54048.0111263539293 | 54048.0111263539293 [147]          
+[148] 54833.9476994414872 | 54833.9476994414872 [148]          
+  ... ...                   ...                 and 27 more ...
+
+      old$Mean           | new$Mean                          
+[176] 3933.3196505927381 | 3933.3196505927381 [176]          
+[177] 4163.1986496962954 | 4163.1986496962954 [177]          
+[178] 4314.9787515613989 | 4314.9787515613989 [178]          
+[179] 4486.6074089603626 - 4486.6074089603635 [179]          
+[180] 4696.0101367664583 | 4696.0101367664583 [180]          
+[181] 4961.1473706195020 | 4961.1473706195020 [181]          
+[182] 5264.6321169718831 | 5264.6321169718831 [182]          
+[183] 5604.4025093391583 | 5604.4025093391583 [183]          
+[184] 5901.5029808441441 - 5901.5029808441432 [184]          
+[185] 6206.6246759065261 - 6206.6246759065252 [185]          
+  ... ...                  ...                and 33 more ...
+
+And 2 more differences ...</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Aggregate stats</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Checking data to replicate </span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>org2_df<span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="fu">paste0</span>(data_url, <span class="st">"wdi_agg_out.Rds"</span>))</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Generating new dataset with descriptive statistics of gdp, lifeex, and pov_intl by region and year</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>rep2_df<span class="ot">&lt;-</span> <span class="fu">collap</span>(wdi, <span class="at">by =</span> <span class="sc">~</span> region <span class="sc">+</span> date, </span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">custom =</span> <span class="fu">list</span>(<span class="at">fmean =</span> <span class="fu">.c</span>(lifeex, gdp, pov_intl), <span class="do">## Generating variables with the corresponding means</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">fsd =</span> <span class="fu">.c</span>(lifeex, gdp, pov_intl), <span class="do">## Generating variables with the correspoding standard dev.</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">fmax_uw =</span> <span class="fu">.c</span>(lifeex, gdp, pov_intl), </span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">fmin_uw =</span> <span class="fu">.c</span>(lifeex, gdp, pov_intl),</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">fmedian =</span> <span class="fu">.c</span>(lifeex, gdp, pov_intl)),</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">w =</span> <span class="sc">~</span> pop) <span class="do">##using population weights</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Converting each dataframe to long format, for the three measures</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>rep2_df_gdp <span class="ot">&lt;-</span> rep2_df <span class="sc">%&gt;%</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(estimate, gdp, fmean.gdp<span class="sc">:</span>fmedian.gdp, <span class="at">factor_key=</span><span class="cn">TRUE</span>)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>rep2_df_lifeex <span class="ot">&lt;-</span> rep2_df <span class="sc">%&gt;%</span></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(estimate, lifeex, fmean.lifeex<span class="sc">:</span>fmedian.lifeex, <span class="at">factor_key =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>rep2_df_povintl <span class="ot">&lt;-</span> rep2_df <span class="sc">%&gt;%</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(estimate, pov_intl, fmean.pov_intl<span class="sc">:</span>fmedian.pov_intl, <span class="at">factor_key =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a><span class="co">#Keeping only necessary variables for each dataframe (estimate, region, date, pop and gdp)</span></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>rep2_df_gdp <span class="ot">=</span> rep2_df_gdp[<span class="fu">c</span>(<span class="st">"estimate"</span>,<span class="st">"region"</span>, <span class="st">"date"</span>, <span class="st">"pop"</span>, <span class="st">"gdp"</span>)]</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>rep2_df_lifeex <span class="ot">=</span> rep2_df_lifeex[<span class="fu">c</span>(<span class="st">"estimate"</span>,<span class="st">"region"</span>, <span class="st">"date"</span>, <span class="st">"pop"</span>, <span class="st">"lifeex"</span>)]</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>rep2_df_povintl <span class="ot">=</span> rep2_df_povintl[<span class="fu">c</span>(<span class="st">"estimate"</span>,<span class="st">"region"</span>, <span class="st">"date"</span>, <span class="st">"pop"</span>, <span class="st">"pov_intl"</span>)]</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a><span class="co">#Cleaning up estimate variable for the dataframe for estimates of GDP variable</span></span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>rep2_df_gdp<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">".*fmean.*"</span>, <span class="st">"Mean"</span>, rep2_df_gdp<span class="sc">$</span>estimate)</span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>rep2_df_gdp<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">".*fsd.*"</span>, <span class="st">"SD"</span>, rep2_df_gdp<span class="sc">$</span>estimate)</span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>rep2_df_gdp<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">".*fmin.*"</span>, <span class="st">"Min"</span>, rep2_df_gdp<span class="sc">$</span>estimate)</span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>rep2_df_gdp<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">".*fmax.*"</span>, <span class="st">"Max"</span>, rep2_df_gdp<span class="sc">$</span>estimate)</span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>rep2_df_gdp<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">".*fmedian.*"</span>, <span class="st">"Median"</span>, rep2_df_gdp<span class="sc">$</span>estimate)</span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a><span class="co">#Cleaning up estimate variable for the dataframe for estimates of lifeex variable</span></span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a>rep2_df_lifeex<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">".*fmean.*"</span>, <span class="st">"Mean"</span>, rep2_df_lifeex<span class="sc">$</span>estimate)</span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>rep2_df_lifeex<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">".*fsd.*"</span>, <span class="st">"SD"</span>, rep2_df_lifeex<span class="sc">$</span>estimate)</span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>rep2_df_lifeex<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">".*fmin.*"</span>, <span class="st">"Min"</span>, rep2_df_lifeex<span class="sc">$</span>estimate)</span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a>rep2_df_lifeex<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">".*fmax.*"</span>, <span class="st">"Max"</span>, rep2_df_lifeex<span class="sc">$</span>estimate)</span>
+<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a>rep2_df_lifeex<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">".*fmedian.*"</span>, <span class="st">"Median"</span>, rep2_df_lifeex<span class="sc">$</span>estimate)</span>
+<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a><span class="co">#Cleaning up estimate variable for the dataframe for estimates of pov_intl variable</span></span>
+<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a>rep2_df_povintl<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">".*fmean.*"</span>, <span class="st">"Mean"</span>, rep2_df_povintl<span class="sc">$</span>estimate)</span>
+<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>rep2_df_povintl<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">".*fsd.*"</span>, <span class="st">"SD"</span>, rep2_df_povintl<span class="sc">$</span>estimate)</span>
+<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a>rep2_df_povintl<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">".*fmin.*"</span>, <span class="st">"Min"</span>, rep2_df_povintl<span class="sc">$</span>estimate)</span>
+<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a>rep2_df_povintl<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">".*fmax.*"</span>, <span class="st">"Max"</span>, rep2_df_povintl<span class="sc">$</span>estimate)</span>
+<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a>rep2_df_povintl<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">".*fmedian.*"</span>, <span class="st">"Median"</span>, rep2_df_povintl<span class="sc">$</span>estimate)</span>
+<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-45"><a href="#cb31-45" aria-hidden="true" tabindex="-1"></a><span class="co">#Merging dataframes made for each measure, to get the final replicated dataframe with all three measures and the estimates required (mean, SD, min, max and median)</span></span>
+<span id="cb31-46"><a href="#cb31-46" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> <span class="fu">merge</span>(rep2_df_gdp, rep2_df_lifeex, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"estimate"</span>,<span class="st">"region"</span>, <span class="st">"date"</span>, <span class="st">"pop"</span>))</span>
+<span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a>rep2_df <span class="ot">&lt;-</span> <span class="fu">merge</span>(merged, rep2_df_povintl, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"estimate"</span>,<span class="st">"region"</span>, <span class="st">"date"</span>, <span class="st">"pop"</span>))</span>
+<span id="cb31-48"><a href="#cb31-48" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(merged, rep2_df_, rep2_df_gdp, rep2_df_lifeex, rep2_df_povintl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in rm(merged, rep2_df_, rep2_df_gdp, rep2_df_lifeex, rep2_df_povintl):
+object 'rep2_df_' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#FINAL OUTPUT</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(rep2_df, <span class="st">"ReplicateDF_Q2.csv"</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Checking for similarity with original datagrame</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>waldo<span class="sc">::</span><span class="fu">compare</span>(rep2_df, org2_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>`class(old)`: "data.frame"             
+`class(new)`: "data.table" "data.frame"
+
+`names(old)[2:7]`: "region" "date" "pop" "gdp"    "lifeex" "pov_intl"
+`names(new)[2:7]`: "region" "date" "pop" "lifeex" "gdp"    "pov_intl"
+
+`attr(old, 'sorted')` is absent
+`attr(new, 'sorted')` is a character vector ('iso3c', 'date')
+
+     old$estimate | new$estimate                  
+ [1] "Max"        - "mean"       [1]              
+ [2] "Max"        - "mean"       [2]              
+ [3] "Max"        - "mean"       [3]              
+ [4] "Max"        - "mean"       [4]              
+ [5] "Max"        - "mean"       [5]              
+ [6] "Max"        - "mean"       [6]              
+ [7] "Max"        - "mean"       [7]              
+ [8] "Max"        - "mean"       [8]              
+ [9] "Max"        - "mean"       [9]              
+[10] "Max"        - "mean"       [10]             
+ ... ...            ...          and 1080 more ...
+
+`attr(old$region, 'label')` is absent
+`attr(new$region, 'label')` is a character vector ('region')
+
+`attr(old$date, 'label')` is absent
+`attr(new$date, 'label')` is a character vector ('year')
+
+`attr(old$pop, 'label')` is absent
+`attr(new$pop, 'label')` is a character vector ('Population, total')
+
+`attr(old$gdp, 'label')` is absent
+`attr(new$gdp, 'label')` is a character vector ('GDP per capita, PPP (constant 2017 international $)')
+
+     old$gdp | new$gdp                 
+ [1] 32846   -                         
+ [2] 33870   -                         
+ [3] 34049   -                         
+ [4] 33783   -                         
+ [5] 34054   -                         
+ [6] 34868   -                         
+ [7] 35879   -                         
+ [8] 36145   -                         
+ [9] 36099   -                         
+[10] 37476   -                         
+ ... ...       ...     and 211 more ...
+
+      old$gdp | new$gdp                 
+[434] 3858    | 3858    [216]           
+[435] 3865    | 3865    [217]           
+[436] 3870    | 3870    [218]           
+[437] 1424    - 8497    [219]           
+[438] 1535    - 8691    [220]           
+[439] 1732    - 8667    [221]           
+[440] 1950    - 8576    [222]           
+[441] 2179    - 8619    [223]           
+[442] 2391    - 8796    [224]           
+[443] 2601    - 9011    [225]           
+  ... ...       ...     and 295 more ...
+
+And 9 more differences ...</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Find outliers</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>org3_df<span class="ot">&lt;-</span>readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="fu">paste0</span>(data_url, <span class="st">"wdi_outliers_out.Rds"</span>))</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Generating dataset with mean and sd of lifeex, gdp and gini</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>df_summary <span class="ot">&lt;-</span> wdi <span class="sc">%&gt;%</span> </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">gdp.mean =</span> <span class="fu">weighted.mean</span>(gdp, pop, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="do">##Generating variable with mean of GDP by year</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">gini.mean=</span> <span class="fu">weighted.mean</span>(gini, pop, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="do">##Generating variable with mean of GINI by year</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">lifeex.mean=</span> <span class="fu">weighted.mean</span>(lifeex, pop, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">gdp.sd =</span> <span class="fu">sd</span>(gdp, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="do">##Generating variable with standard deviation of GDP by year</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">gini.sd=</span> <span class="fu">sd</span>(gini, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="do">##Generating variable with standard deviation of GINI by year</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">lifeex.sd=</span> <span class="fu">sd</span>(lifeex, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Joining original data with summary </span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>rep3_df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(wdi, df_summary, <span class="at">by =</span> <span class="st">"date"</span>)</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Generating outlier identifying variables. Creating boolean variables that are TRUE if the measure is less than 2.5 standard deviations above or below the mean.</span></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quiet</span>(rep3_df<span class="sc">$</span>ll_gdp <span class="ot">&lt;-</span> <span class="fu">print</span>(rep3_df<span class="sc">$</span>gdp <span class="sc">&lt;</span> rep3_df<span class="sc">$</span>gdp.mean <span class="sc">-</span> <span class="fl">2.5</span><span class="sc">*</span>(rep3_df<span class="sc">$</span>gdp.sd)))</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quiet</span>(rep3_df<span class="sc">$</span>hl_gdp <span class="ot">&lt;-</span> <span class="fu">print</span>(rep3_df<span class="sc">$</span>gdp <span class="sc">&gt;</span> rep3_df<span class="sc">$</span>gdp.mean <span class="sc">+</span> <span class="fl">2.5</span><span class="sc">*</span>(rep3_df<span class="sc">$</span>gdp.sd)))</span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quiet</span>(rep3_df<span class="sc">$</span>ll_gini <span class="ot">&lt;-</span> <span class="fu">print</span>(rep3_df<span class="sc">$</span>gini <span class="sc">&lt;</span> rep3_df<span class="sc">$</span>gini.mean <span class="sc">-</span> <span class="fl">2.5</span><span class="sc">*</span>(rep3_df<span class="sc">$</span>gini.sd)))</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quiet</span>(rep3_df<span class="sc">$</span>hl_gini <span class="ot">&lt;-</span> <span class="fu">print</span>(rep3_df<span class="sc">$</span>gini <span class="sc">&gt;</span> rep3_df<span class="sc">$</span>gini.mean <span class="sc">+</span> <span class="fl">2.5</span><span class="sc">*</span>(rep3_df<span class="sc">$</span>gini.sd)))</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quiet</span>(rep3_df<span class="sc">$</span>ll_lifeex <span class="ot">&lt;-</span> <span class="fu">print</span>(rep3_df<span class="sc">$</span>lifeex <span class="sc">&lt;</span> rep3_df<span class="sc">$</span>lifeex.mean <span class="sc">-</span> <span class="fl">2.5</span><span class="sc">*</span>(rep3_df<span class="sc">$</span>lifeex.sd)))</span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quiet</span>(rep3_df<span class="sc">$</span>hl_lifeex <span class="ot">&lt;-</span> <span class="fu">print</span>(rep3_df<span class="sc">$</span>lifeex <span class="sc">&gt;</span> rep3_df<span class="sc">$</span>lifeex.mean <span class="sc">+</span> <span class="fl">2.5</span><span class="sc">*</span>(rep3_df<span class="sc">$</span>lifeex.sd)))</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a><span class="co">#FINAL OUTPUT</span></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(rep3_df, <span class="st">"ReplicateDF_Q3.csv"</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a><span class="co">#Checking for similarity with original datagrame</span></span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a>waldo<span class="sc">::</span><span class="fu">compare</span>(rep3_df, org3_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     names(old)    | names(new)                  
+[10] "pov_intl"    | "pov_intl"    [10]          
+[11] "pov_lmic"    | "pov_lmic"    [11]          
+[12] "pov_umic"    | "pov_umic"    [12]          
+[13] "gdp.mean"    - "mean_lifeex" [13]          
+[14] "gini.mean"   - "sd_lifeex"   [14]          
+[15] "lifeex.mean" - "hl_lifeex"   [15]          
+[16] "gdp.sd"      - "ll_lifeex"   [16]          
+[17] "gini.sd"     - "mean_gdp"    [17]          
+[18] "lifeex.sd"   - "sd_gdp"      [18]          
+[19] "ll_gdp"      - "hl_gdp"      [19]          
+ ... ...             ...           and 5 more ...
+
+`old$gdp.mean` is a double vector (9566.9769782402, 9510.64978016636, 9492.38913200708, 9489.38029694498, 9599.830824424, ...)
+`new$gdp.mean` is absent
+
+`old$gini.mean` is a double vector (35.8092696275814, 34.8497784891616, 41.8397610388279, 35.4086793883555, 40.9813601512541, ...)
+`new$gini.mean` is absent
+
+`old$lifeex.mean` is a double vector (65.1387081809776, 65.3039173530013, 65.5710908143634, 65.7207119327005, 65.954878380793, ...)
+`new$lifeex.mean` is absent
+
+`old$gdp.sd` is a double vector (14838.7360687013, 14745.7437225457, 14689.8307974482, 14608.2182982226, 14921.0172591504, ...)
+`new$gdp.sd` is absent
+
+`old$gini.sd` is a double vector (9.29539289133757, 12.1397486272174, 10.6440951406701, 11.8460162079916, 10.1400164365416, ...)
+`new$gini.sd` is absent
+
+`old$lifeex.sd` is a double vector (9.72311099091425, 9.6384959014155, 9.79454451916214, 9.94729348325503, 10.3893070261439, ...)
+`new$lifeex.sd` is absent
+
+`old$hl_gdp[79:85]`: TRUE TRUE TRUE FALSE TRUE TRUE TRUE
+`new$hl_gdp[79:85]`: TRUE TRUE TRUE TRUE  TRUE TRUE TRUE
+
+`old$hl_gdp[89:95]`: TRUE TRUE TRUE FALSE FALSE FALSE FALSE
+`new$hl_gdp[89:95]`: TRUE TRUE TRUE TRUE  FALSE FALSE FALSE
+
+      old$hl_gdp | new$hl_gdp               
+[164] FALSE      | FALSE      [164]         
+[165] FALSE      | FALSE      [165]         
+[166] FALSE      | FALSE      [166]         
+[167] FALSE      - TRUE       [167]         
+[168] FALSE      | FALSE      [168]         
+[169] FALSE      | FALSE      [169]         
+[170] FALSE      | FALSE      [170]         
+[171] FALSE      | FALSE      [171]         
+[172] FALSE      - TRUE       [172]         
+[173] FALSE      - TRUE       [173]         
+  ... ...          ...        and 9 more ...
+
+And 82 more differences ...</code></pre>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

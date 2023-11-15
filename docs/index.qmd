@@ -270,11 +270,11 @@ rep4_df <- merge(headcount_df, povertygap_df, by=c("year","pov_line"))
 rep4_df <- merge(rep4_df, povertysev_df, by=c("year","pov_line"))
 
 #FINAL OUTPUT
-write.csv(rep4_df, "./output/ReplicateDF_Q4.csv", row.names=FALSE)
+write.csv(rep4_df, "ReplicateDF_Q4.csv", row.names=FALSE)
 
 #Generating the plot
 plot4 <- ggplot(rep4_df, aes(x = year, y = headcount, group = pov_line, color = as.factor(pov_line))) + geom_line()
-ggsave('./output/plot_4.jpg')
+ggsave('plot_4.jpg')
 ```
 
 5.  Lorenz curve
@@ -330,11 +330,11 @@ calculate_lorenz_curves <- function(survey_list) {
 rep5_df <- calculate_lorenz_curves(l_svy)
 
 #FINAL OUTPUT
-write.csv(rep5_df, "./output/ReplicateDF_Q5.csv", row.names=FALSE)
+write.csv(rep5_df, "ReplicateDF_Q5.csv", row.names=FALSE)
 
 #Generating and saving the plot
 plot5 <- ggplot(rep5_df, aes(x = cum_population, y = cum_welfare, group = year, color = as.factor(year))) + geom_line()
-ggsave('./output/plot_5.jpg')
+ggsave('plot_5.jpg')
 
 ```
 
@@ -377,10 +377,10 @@ calculate_gini_coef <- function(df) {
 rep6_df <- calculate_gini_coef(rep5_df)
 
 #FINAL OUTPUT
-write.csv(rep6_df, "./output/ReplicateDF_Q6.csv", row.names=FALSE)
+write.csv(rep6_df, "ReplicateDF_Q6.csv", row.names=FALSE)
 
 #Generating and saving the plot
 plot6 <- ggplot(rep6_df, aes(x = year, y = gini)) + 
        geom_line()
-ggsave('./output/plot_6.jpg')
+ggsave('plot_6.jpg')
 ```
